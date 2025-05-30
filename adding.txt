@@ -1,0 +1,40 @@
+What is 7 + 5
+12
+twelve
++12
+What is 9 + 6
+15
+fifteen
++15
+What is 4 + 8
+12
+twelve
++12
+What is 11 + 13
+24
+twenty four
++24
+What is 20 + 30
+50
+fifty
++50
+What is 3 + 7
+10
+ten
++10
+What is 14 + 5
+19
+nineteen
++19
+What is 8 + 8
+16
+sixteen
++16
+What is 25 + 10
+35
+thirty five
++35
+What is 6 + 9
+15
+fifteen
++15
