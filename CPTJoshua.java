@@ -12,9 +12,6 @@ public class CPTJoshua{
 		//Set backgroundcolor
 		//Menu
 		while(true){
-			con.setDrawColor(Color.BLACK);
-			con.fillRect(0,0,1279,720);
-			con.setDrawColor(Color.WHITE);
 			con.drawString("Play (P)",500, 250);
 			con.drawString("LeaderBoard (L)" ,500,300);
 			con.drawString("Add quiz (A)" ,500,350);
@@ -26,16 +23,18 @@ public class CPTJoshua{
 					con.clear();
 					con.setDrawColor(Color.BLACK);
 					con.fillRect(0,0,1279,720);
+					System.out.println("work");
 					con.setDrawColor(Color.WHITE);
 					con.drawString("Username: ", 500, 250);
 					strname = con.readLine();
-					con.setDrawColor(Color.BLACK);
-					con.fillRect(0,0,1279,720);
-					con.clear();
+					//con.setDrawColor(Color.BLACK);
+					//con.fillRect(0,0,1279,720);
 					con.setDrawColor(Color.WHITE);
-					System.out.println(strname);
-					con.drawString("Select the quiz", 500, 250);
-					
+					con.clear();
+					con.drawString("Welcome" + strname, 500,250);
+				}
+				if(chrInput == 'q'){
+					con.closeWindow();
 				}
 			}
 		}
