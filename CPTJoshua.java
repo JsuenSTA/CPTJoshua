@@ -9,6 +9,12 @@ public class CPTJoshua{
 		//con.setDrawFont(new Font("Times New Roman", Font.BOLD,30));
 		//Varaibles
 		String strname;
+		char chrhelpexit;
+		chrhelpexit = 'a';
+		boolean blnplay;
+		boolean blnhelp;
+		blnplay = true;
+		blnhelp = true;
 		//Set backgroundcolor
 		//Menu
 		while(true){
@@ -20,7 +26,7 @@ public class CPTJoshua{
 			char chrInput = con.getChar();
 			System.out.println(chrInput);
 			while(chrInput != 'p'||chrInput != 'l' || chrInput !='a'|| chrInput != 'h'){
-				if(chrInput == 'p'){
+				if(chrInput == 'p' ){
 					con.clear();
 					con.setDrawColor(Color.BLACK);
 					con.fillRect(0,0,1279,720);
@@ -44,11 +50,11 @@ public class CPTJoshua{
 					con.println("The game with calculate the average with the accuracy");
 					con.println("Your goal is to get 100% with the questions");
 					con.println("Press l to leave the help menu");
-					while(chrInput != 'l'){
-						con.sleep(10000);
-						chrInput = con.getChar();
+					while(chrhelpexit != 'l' || chrhelpexit != 'L'){
+						chrhelpexit = con.getChar();
 					}
-					break;
+					System.out.println("it contiuned");
+					blnhelp = false;
 				}
 				if(chrInput == 'q'){
 					con.closeWindow();
