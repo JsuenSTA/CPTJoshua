@@ -15,10 +15,11 @@ public class CPTJoshua{
 			con.drawString("Play (P)",500, 250);
 			con.drawString("LeaderBoard (L)" ,500,300);
 			con.drawString("Add quiz (A)" ,500,350);
-			con.drawString("Quit (Q)" ,500,400);
+			con.drawString("Help(h)",500, 400);
+			con.drawString("Quit (Q)" ,500,450);
 			char chrInput = con.getChar();
 			System.out.println(chrInput);
-			while(chrInput != 'p'||chrInput != 'l' || chrInput !='a'|| chrInput != 'a'){
+			while(chrInput != 'p'||chrInput != 'l' || chrInput !='a'|| chrInput != 'h'){
 				if(chrInput == 'p'){
 					con.clear();
 					con.setDrawColor(Color.BLACK);
@@ -32,6 +33,22 @@ public class CPTJoshua{
 					con.setDrawColor(Color.WHITE);
 					con.clear();
 					con.drawString("Welcome" + strname, 500,250);
+				}
+				if(chrInput == 'h'){
+					con.clear();
+					con.setDrawColor(Color.BLACK);
+					con.fillRect(0,0,1279,720);
+					con.setDrawColor(Color.WHITE);
+					con.println("This is a math quiz");
+					con.println("There are 3 deafult answer and you have to type it out");
+					con.println("The game with calculate the average with the accuracy");
+					con.println("Your goal is to get 100% with the questions");
+					con.println("Press l to leave the help menu");
+					while(chrInput != 'l'){
+						con.sleep(10000);
+						chrInput = con.getChar();
+					}
+					break;
 				}
 				if(chrInput == 'q'){
 					con.closeWindow();
