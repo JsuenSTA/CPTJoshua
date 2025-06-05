@@ -11,7 +11,10 @@ public class CPTJoshua{
 		String strname;
 		String strquiz;
 		String strselect;
+		int intcount;
 		char chrhelpexit;
+		char chrInput;
+		chrInput = ' ';
 		chrhelpexit = 'a';
 		boolean blnplay;
 		boolean blnhelp;
@@ -21,15 +24,17 @@ public class CPTJoshua{
 		//Set backgroundcolor
 		//Menu
 		while(true){
-			con.drawString("Play (P)",500, 250);
-			con.drawString("LeaderBoard (L)" ,500,300);
-			con.drawString("Add quiz (A)" ,500,350);
-			con.drawString("Help(h)",500, 400);
-			con.drawString("Quit (Q)" ,500,450);
-			char chrInput = con.getChar();
-			System.out.println(chrInput);
 			while(chrInput != 'p'||chrInput != 'l' || chrInput !='a'|| chrInput != 'h'){
+				con.clear();
+				con.drawString("Play (P)",500, 250);
+				con.drawString("LeaderBoard (L)" ,500,300);
+				con.drawString("Add quiz (A)" ,500,350);
+				con.drawString("Help(h)",500, 400);
+				con.drawString("Quit (Q)" ,500,450);
+				chrInput = con.getChar();
+				System.out.println(chrInput);
 				if(chrInput == 'p' ){
+					//Username input
 					con.clear();
 					con.setDrawColor(Color.BLACK);
 					con.fillRect(0,0,1279,720);
@@ -37,12 +42,18 @@ public class CPTJoshua{
 					con.println("Username: ");
 					strname = con.readLine();
 					con.clear();
+					//Selecting quiz
 					con.println("Welcome" + strname);
-					con.println("Select quiz");
+					con.println("Select quiz(Type the name correctly)\n");
 					while(master.eof() == false){
-						strselect = 
+						strselect = master.readLine();
+						con.println(strselect);
 					}
-					
+					master.close();
+					strquiz= con.readLine();
+					//Loading in the quiz
+					intcount = arraytest.countQuestions(strquiz);
+					System.out.println(intcount);
 				}
 				if(chrInput == 'h'){
 					con.clear();
@@ -54,9 +65,6 @@ public class CPTJoshua{
 					con.println("The game with calculate the average with the accuracy");
 					con.println("Your goal is to get 100% with the questions");
 					con.println("Press l to leave the help menu");
-					if(chrhelpexit != 'l' || chrhelpexit != 'L'){
-						
-					}
 					System.out.println("it contiuned");
 					blnhelp = false;
 				}
