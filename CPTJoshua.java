@@ -10,12 +10,14 @@ public class CPTJoshua{
 		//Varaibles
 		String strname;
 		String strquiz;
+		String strselect;
 		char chrhelpexit;
 		chrhelpexit = 'a';
 		boolean blnplay;
 		boolean blnhelp;
 		blnplay = true;
 		blnhelp = true;
+		TextInputFile master = new TextInputFile("master.txt");
 		//Set backgroundcolor
 		//Menu
 		while(true){
@@ -37,7 +39,10 @@ public class CPTJoshua{
 					con.clear();
 					con.println("Welcome" + strname);
 					con.println("Select quiz");
-					strquiz = con.readLine();
+					while(master.eof() == false){
+						strselect = 
+					}
+					
 				}
 				if(chrInput == 'h'){
 					con.clear();
