@@ -25,7 +25,6 @@ public class arraytest{
 		return strQuiz;
 	}
 
-	
 	public static int countQuestions(String strQuizfile){
 		TextInputFile txtQuizfile = new TextInputFile(strQuizfile);
 		int intLines = 0;
@@ -37,5 +36,15 @@ public class arraytest{
 		txtQuizfile.close();
 		return intLines/4;
 	}
+	public static void printQuestions(String strQuiz[][], int intCount, Console con){
+		int intRow;
+		for(intRow = 0; intRow < intCount; intRow++){
+			con.println(strQuiz[intRow][0]);
+			con.println(strQuiz[intRow][1]);
+			con.println(strQuiz[intRow][2]);
+			con.println(strQuiz[intRow][3]);
+		}
+	}
+
 
 }
