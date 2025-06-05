@@ -9,6 +9,7 @@ public class CPTJoshua{
 		//con.setDrawFont(new Font("Times New Roman", Font.BOLD,30));
 		//Varaibles
 		String strname;
+		String strquiz;
 		char chrhelpexit;
 		chrhelpexit = 'a';
 		boolean blnplay;
@@ -30,15 +31,13 @@ public class CPTJoshua{
 					con.clear();
 					con.setDrawColor(Color.BLACK);
 					con.fillRect(0,0,1279,720);
-					System.out.println("work");
 					con.setDrawColor(Color.WHITE);
-					con.drawString("Username: ", 500, 250);
+					con.println("Username: ");
 					strname = con.readLine();
-					//con.setDrawColor(Color.BLACK);
-					//con.fillRect(0,0,1279,720);
-					con.setDrawColor(Color.WHITE);
 					con.clear();
-					con.drawString("Welcome" + strname, 500,250);
+					con.println("Welcome" + strname);
+					con.println("Select quiz");
+					strquiz = con.readLine();
 				}
 				if(chrInput == 'h'){
 					con.clear();
@@ -50,8 +49,8 @@ public class CPTJoshua{
 					con.println("The game with calculate the average with the accuracy");
 					con.println("Your goal is to get 100% with the questions");
 					con.println("Press l to leave the help menu");
-					while(chrhelpexit != 'l' || chrhelpexit != 'L'){
-						chrhelpexit = con.getChar();
+					if(chrhelpexit != 'l' || chrhelpexit != 'L'){
+						
 					}
 					System.out.println("it contiuned");
 					blnhelp = false;
