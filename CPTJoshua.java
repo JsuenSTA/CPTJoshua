@@ -11,7 +11,15 @@ public class CPTJoshua{
 		String strname;
 		String strquiz;
 		String strselect;
+		String strquestion[][];
+		String strquestioncount;
+		String stranswered;
+		String stravg;
 		int intcount;
+		int intanswered;
+		int intavg;
+		intavg = 0;
+		intanswered = 0;
 		char chrhelpexit;
 		char chrInput;
 		chrInput = ' ';
@@ -21,21 +29,25 @@ public class CPTJoshua{
 		blnplay = true;
 		blnhelp = true;
 		TextInputFile master = new TextInputFile("master.txt");
-		//Set backgroundcolor
-		//Menu
 		while(true){
 			while(chrInput != 'p'||chrInput != 'l' || chrInput !='a'|| chrInput != 'h'){
+				//Menu
 				con.clear();
+				con.setDrawColor(Color.BLACK);
+				con.fillRect(0,0,1279,720);
+				con.setDrawColor(Color.WHITE);
 				con.drawString("Play (P)",500, 250);
 				con.drawString("LeaderBoard (L)" ,500,300);
 				con.drawString("Add quiz (A)" ,500,350);
 				con.drawString("Help(h)",500, 400);
 				con.drawString("Quit (Q)" ,500,450);
+				con.repaint();
 				chrInput = con.getChar();
 				System.out.println(chrInput);
 				if(chrInput == 'p' ){
 					//Username input
 					con.clear();
+					con.repaint();
 					con.setDrawColor(Color.BLACK);
 					con.fillRect(0,0,1279,720);
 					con.setDrawColor(Color.WHITE);
@@ -54,6 +66,23 @@ public class CPTJoshua{
 					//Loading in the quiz
 					intcount = arraytest.countQuestions(strquiz);
 					System.out.println(intcount);
+					strquestion = arraytest.loadQuiz(strquiz,intcount);
+					con.clear();
+					con.println("Loading");
+					con.sleep(1000);
+					con.clear();
+					con.drawString(strquiz,550,0);
+					con.drawString(strname,0,0);
+					strquestioncount = intcount + "";
+					stranswered = intanswered + "";
+					stravg = intavg + "";
+					con.drawString(stranswered,1100,0);
+					con.drawString("/",1125,0);
+					con.drawString(strquestioncount,1150,0);
+					con.drawString(stravg,1200,0);
+					con.drawString("%",1250,0);
+					con.repaint();
+					con.sleep(100000);
 				}
 				if(chrInput == 'h'){
 					con.clear();
