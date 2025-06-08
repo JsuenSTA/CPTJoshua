@@ -12,9 +12,11 @@ public class CPTJoshua{
 		String strquiz;
 		String strselect;
 		String strquestion[][];
+		String strquestionr[][];
 		String strquestioncount;
 		String stranswered;
 		String stravg;
+		String stranswer;
 		int intcount;
 		int intanswered;
 		int intavg;
@@ -25,7 +27,9 @@ public class CPTJoshua{
 		chrInput = ' ';
 		chrhelpexit = 'a';
 		boolean blnplay;
+		boolean blngame;
 		boolean blnhelp;
+		blngame = false;
 		blnplay = true;
 		blnhelp = true;
 		TextInputFile master = new TextInputFile("master.txt");
@@ -67,24 +71,39 @@ public class CPTJoshua{
 					intcount = arraytest.countQuestions(strquiz);
 					System.out.println(intcount);
 					strquestion = arraytest.loadQuiz(strquiz,intcount);
+					System.out.println("sorted quiz");
+					strquestionr = arraytest.sortingquiz(strquestion, intcount);
 					con.clear();
 					con.println("Loading");
 					con.sleep(1000);
 					con.clear();
-					con.drawString(strquiz,550,0);
-					con.drawString(strname,0,0);
-					strquestioncount = intcount + "";
-					stranswered = intanswered + "";
-					stravg = intavg + "";
-					con.drawString(stranswered,1100,0);
-					con.drawString("/",1125,0);
-					con.drawString(strquestioncount,1150,0);
-					con.drawString(stravg,1200,0);
-					con.drawString("%",1250,0);
-					con.repaint();
-					con.sleep(100000);
+					blngame = true;
+					while(blngame = true){
+						//Currently working on
+						intanswered = 0;
+						con.drawString(strquiz,550,0);
+						con.drawString(strname,0,0);
+						strquestioncount = intcount + "";
+						stranswered = intanswered + "";
+						stravg = intavg + "";
+						con.drawString(stranswered,1100,0);
+						con.drawString("/",1125,0);
+						con.drawString(strquestioncount,1150,0);
+						con.drawString(stravg,1200,0);
+						con.drawString("%",1250,0);
+						con.repaint();
+						for(intcount = 0; intcount <= 10; intcount++){
+							//For debug use not main game
+							con.println(strquestionr[intcount][4]);
+
+						}
+						con.sleep(100000);
+						stranswer = con.readLine();
+						
+					}
 				}
 				if(chrInput == 'h'){
+					//Idk how to go back to menu not too worry about right now
 					con.clear();
 					con.setDrawColor(Color.BLACK);
 					con.fillRect(0,0,1279,720);

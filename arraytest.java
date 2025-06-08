@@ -22,15 +22,17 @@ public class arraytest{
 			strQuiz[intRow][1] = txtQuizfile.readLine();
 			strQuiz[intRow][2] = txtQuizfile.readLine();
 			strQuiz[intRow][3] = txtQuizfile.readLine();
+			//Random number for sorting
 			intRand = (int)(Math.random()*100+1);
 			strQuiz[intRow][4] = intRand + "";
+			System.out.println(intRand);
 		}
 		txtQuizfile.close();
 		return strQuiz;
 	}
 
-	public static int countQuestions(String strQuizfile){
-		TextInputFile txtQuizfile = new TextInputFile(strQuizfile);
+	public static int countQuestions(String strQuiz){
+		TextInputFile txtQuizfile = new TextInputFile(strQuiz);
 		int intLines = 0;
 		String strData;
 		while(txtQuizfile.eof() == false){
@@ -38,45 +40,27 @@ public class arraytest{
 			intLines++;
 		}
 		txtQuizfile.close();
-		return intLines/4;
+		return (intLines/4) ;
 	}
-	public static String[][] sortingquiz(String strQuiz[][], int intCount){
-		String strquestionTemp;
-		String stranswertemp1;
-		String stranswertemp2;
-		String stranswertemp3;
-		int intCount2;
-		int intRow;
-		intRow = intCount;
-		for(intCount2 = 0; intCount2 < 5-1; intCount2++){
-			for(intCount = 0; intCount < 5-1; intCount++){
-				// Convert the people's score to integer and compare
-				if(Integer.parseInt(strQuiz[intCount][2]) > Integer.parseInt(strQuiz[intCount+1][2])){
-					// Swap here
-					// swap questions
-					strquestionTemp = strQuiz[intCount][0];
-					strQuiz[intRow][0] = strQuiz[intRow+1][0];
-					strQuiz[intRow+1][0] = strquestionTemp;
-					
-					// swap answer 1
-					strquestionTemp = strQuiz[intCount][1];
-					strQuiz[intRow][1] = strQuiz[intRow+1][1];
-					strQuiz[intRow+1][1] = strquestionTemp;
-					// swap answer 2
-					strquestionTemp = strQuiz[intCount][2];
-					strQuiz[intRow][2] = strQuiz[intRow+1][2];
-					strQuiz[intRow+1][2] = strquestionTemp;
-					// swap answer 2
-					strquestionTemp = strQuiz[intCount][3];
-					strQuiz[intRow][3] = strQuiz[intRow+1][3];
-					strQuiz[intRow+1][3] = strquestionTemp;
-
+public static String[][] sortingquiz(String strQuiz[][], int intCount){
+	String strTemp;
+	for(int pass = 0; pass < intCount - 1; pass++){
+		for(int row = 0; row < intCount - 1 - pass; row++){
+			// Compare the 5th column (index 4) as integer
+			if(Integer.parseInt(strQuiz[row][4]) > Integer.parseInt(strQuiz[row+1][4])){
+				// Swap the entire row
+				for(int col = 0; col < 5; col++){
+					strTemp = strQuiz[row][col];
+					strQuiz[row][col] = strQuiz[row+1][col];
+					strQuiz[row+1][col] = strTemp;
 				}
-				
 			}
 		}
-		return strQuiz;
 	}
+	return strQuiz;
+}
+
+ 
 	public static void printQuestions(String strQuiz[][], int intCount, Console con){
 		int intRow;
 		for(intRow = 0; intRow < intCount; intRow++){
