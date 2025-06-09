@@ -42,33 +42,24 @@ public class arraytest{
 		txtQuizfile.close();
 		return (intLines/4) ;
 	}
-public static String[][] sortingquiz(String strQuiz[][], int intCount){
-	String strTemp;
-	for(int pass = 0; pass < intCount - 1; pass++){
-		for(int row = 0; row < intCount - 1 - pass; row++){
-			// Compare the 5th column (index 4) as integer
-			if(Integer.parseInt(strQuiz[row][4]) > Integer.parseInt(strQuiz[row+1][4])){
-				// Swap the entire row
-				for(int col = 0; col < 5; col++){
-					strTemp = strQuiz[row][col];
-					strQuiz[row][col] = strQuiz[row+1][col];
-					strQuiz[row+1][col] = strTemp;
+	public static String[][] sortingquiz(String strQuiz[][], int intCount){
+		String strTemp;
+		for(int intpass = 0; intpass < intCount - 1; intpass++){
+			for(int introw = 0; introw < intCount - 1 - intpass; introw++){
+				// Compare the 5th column (index 4) as integer
+				if(Integer.parseInt(strQuiz[introw][4]) > Integer.parseInt(strQuiz[introw+1][4])){
+					// Swap the entire row
+					for(int intcol = 0; intcol < 5; intcol++){
+						strTemp = strQuiz[introw][intcol];
+						strQuiz[introw][intcol] = strQuiz[introw+1][intcol];
+						strQuiz[introw+1][intcol] = strTemp;
+					}
 				}
 			}
 		}
+		return strQuiz;
 	}
-	return strQuiz;
-}
 
  
-	public static void printQuestions(String strQuiz[][], int intCount, Console con){
-		int intRow;
-		for(intRow = 0; intRow < intCount; intRow++){
-			con.println(strQuiz[intRow][0]);
-			con.println(strQuiz[intRow][1]);
-			con.println(strQuiz[intRow][2]);
-			con.println(strQuiz[intRow][3]);
-		}
-	}
 }
 
