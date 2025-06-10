@@ -11,14 +11,20 @@ public class CPTJoshua{
 		String strname;
 		String strquiz;
 		String strselect;
+		//Normal leaderboard
 		String strquestion[][];
+		//Sorted question
 		String strquestionr[][];
+		//Normal leaderboard
+		String strleaderboard[][];
 		String strquestioncount;
 		String stranswered;
 		String stravg;
 		String stranswer;
 		String strcontiune;
+		strquiz = "";
 		int intcount;
+		int intleaderboardcount;
 		int intanswered;
 		int intavg;
 		intavg = 0;
@@ -31,11 +37,12 @@ public class CPTJoshua{
 		boolean blngame;
 		boolean blnhelp;
 		boolean blnmoreans;
+		boolean blnfilecheck;
+		blnfilecheck = false;
 		blnmoreans = true;
 		blngame = false;
 		blnplay = true;
 		blnhelp = true;
-		TextInputFile master = new TextInputFile("master.txt");
 		while(true){
 			//Menu
 			con.clear();
@@ -60,9 +67,9 @@ public class CPTJoshua{
 				con.println("Username: ");
 				strname = con.readLine();
 				con.clear();
-				//Selecting quiz
 				con.println("Welcome" + strname);
 				con.println("Select quiz(Type the name correctly)\n");
+				TextInputFile master = new TextInputFile("master.txt");
 				while(master.eof() == false){
 					strselect = master.readLine();
 					con.println(strselect);
@@ -91,9 +98,9 @@ public class CPTJoshua{
 					con.drawString(strquiz, 550, 0);
 					con.drawString(strname, 0, 0);
 					// Display score and accuracy
-					strquestioncount = (intcount + 1) + "";
+					strquestioncount = (intcount) + "";
 					stranswered = intanswered + "";
-					intavg = (intanswered * 100) / (intcount + 1);
+					intavg = (int) ((intanswered * 100.0) / intcount);
 					stravg = intavg + "";
 					con.drawString(stranswered, 1100, 0);
 					con.drawString("/", 1125, 0);
@@ -115,21 +122,41 @@ public class CPTJoshua{
 						}
 					con.repaint();
 					// small pause before next question
-					con.sleep(1500); 
+					//con.sleep(500); 
 				}
 				// Final score
+				TextOutputFile leaderboard = new TextOutputFile("leaderboard.txt", true);
 				con.setDrawColor(Color.BLACK);
 				con.fillRect(0,0,1279,720);
 				con.clear();
 				con.setDrawColor(Color.WHITE);
 				intavg = (int) ((intanswered * 100.0) / intcount);
 				con.clear();
+				leaderboard.println(strname);
+				leaderboard.println(strquiz);
+				leaderboard.println(intavg);
+				leaderboard.close();
 				con.drawString("Final Score for " + strname + ":", 500, 300);
 				con.drawString(intanswered + "/" + intcount + " - " + intavg + "%", 500, 400);
 				con.println("Press any key to return to main menu.");
 				con.getChar();
+			}else if(chrInput == 'l'){
+				con.clear();
+				con.setDrawColor(Color.BLACK);
+				con.fillRect(0,0,1279,720);
+				con.setDrawColor(Color.WHITE);
+				TextInputFile leaderboard = new TextInputFile("leaderboard.txt");
+				intleaderboardcount = arraytest.countleaderboard();
+				strleaderboard = arraytest.loadleaderboard(intleaderboardcount);
+				for (intcount = 0; intcount < strleaderboard.length; intcount++) {
+					con.println(strleaderboard[intcount][0]);
+					con.println(strleaderboard[intcount][1]);
+					con.println(strleaderboard[intcount][2]);
+				}
+				con.println("Press any key to leave");
+				con.getChar();
 			}else if(chrInput == 'h'){
-				//Idk how to go back to menu not too worry about right now
+				//Help screen
 				con.clear();
 				con.setDrawColor(Color.BLACK);
 				con.fillRect(0,0,1279,720);
@@ -141,10 +168,12 @@ public class CPTJoshua{
 				con.println("Press any key to return to main menu.");
 				con.getChar();
 			}else if(chrInput =='a'){
+				//add quiz
 				con.clear();
 				con.setDrawColor(Color.BLACK);
 				con.fillRect(0,0,1279,720);
 				con.setDrawColor(Color.WHITE);
+				//Setting up file name
 				con.println("Create your quiz");
 				con.println("Follow the txt format");
 				con.println("Ex: adding.txt");
@@ -153,6 +182,7 @@ public class CPTJoshua{
 				con.println("Let's start creating your "+strquiz);
 				con.sleep(1000);
 				con.clear();
+				//The process of adding qustion
 				while(blnmoreans == true){
 					con.println("Question one");
 					String strQuestion = con.readLine();
