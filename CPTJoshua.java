@@ -86,7 +86,9 @@ public class CPTJoshua{
 				con.clear();
 				con.println("Welcome " + strname);
 				con.println("Select quiz\n");
+				blnfilecheck = false;
 				while(blnfilecheck == false){
+					//showing the selection of the quiz
 					TextInputFile masterlist= new TextInputFile("master.txt");
 					while(masterlist.eof() == false){
 						strselect = masterlist.readLine();
@@ -95,6 +97,7 @@ public class CPTJoshua{
 					masterlist.close();
 					con.print("\n");
 					strquiz = con.readLine();
+					//Checking if user enter a valid option
 					TextInputFile mastercheck= new TextInputFile("master.txt");
 					while(mastercheck.eof() == false){
 						strfile = mastercheck.readLine();
@@ -112,11 +115,12 @@ public class CPTJoshua{
 						con.clear();
 					} 
 				}
-				strquiz =strquiz+".txt";
+				strquiz = strquiz+".txt";
 				//Loading in the quiz
 				intcount = arraytest.countQuestions(strquiz);
 				System.out.println("Before sorted");
 				strquestion = arraytest.loadQuiz(strquiz,intcount);
+				//Checking if the quiz is actaulyl sorted in the terminal
 				for (intcount = 0; intcount < strquestion.length; intcount++){
 					System.out.println(strquestion[intcount][4]);
 				}
@@ -132,6 +136,7 @@ public class CPTJoshua{
 				blngame = true;
 				intanswered = 0;
 				intavg = 0;
+				//The main game starts here
 				for (intcount = 0; intcount < strquestionr.length; intcount++) {
 					con.setDrawColor(Color.BLACK);
 					con.fillRect(0,0,1279,720);
@@ -173,8 +178,9 @@ public class CPTJoshua{
 				con.fillRect(0,0,1279,720);
 				con.clear();
 				con.setDrawColor(Color.WHITE);
-				intavg = (int) ((intanswered * 100.0) / intcount);
+				intavg = (int)((intanswered*100.0)/intcount);
 				con.clear();
+				//Sending information to leaderboard
 				leaderboard.println(strname);
 				leaderboard.println(strquiz);
 				leaderboard.println(intavg);
@@ -197,8 +203,11 @@ public class CPTJoshua{
 					con.drawString("Name",350,70);
 					con.drawString("Quiz",500,70);
 					con.drawString("Score",850,70);
+					//Name
 					con.drawString(strleaderboard[intcount][0],350,(120+intcount*50));
+					//Quiz
 					con.drawString(strleaderboard[intcount][1],500,(120+intcount*50));
+					//Score
 					con.drawString(strleaderboard[intcount][2],850,(120+intcount*50));
 				}
 				con.println("Press any key to leave");
@@ -244,6 +253,7 @@ public class CPTJoshua{
 				con.println("Let's start creating your "+strquiz);
 				con.sleep(1000);
 				con.clear();
+				blnmoreans = true;
 				//The process of adding qustion
 				while(blnmoreans == true){
 					con.println("Question: ");
@@ -268,7 +278,7 @@ public class CPTJoshua{
 						newquiz.close();
 						blnmoreans = false;
 					}
-			}		
+				}		
 			}else if(chrInput == 'q' || chrInput == 'Q'){
 				//Quit 
 				con.closeWindow();

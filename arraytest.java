@@ -5,7 +5,6 @@ import java.awt.Font;
 
 public class arraytest{
 	//Quiz methods
-	
 	public static int countQuestions(String strQuiz){
 		TextInputFile txtQuizfile = new TextInputFile(strQuiz);
 		int intLines = 0;
@@ -35,8 +34,6 @@ public class arraytest{
 		txtQuizfile.close();
 		return strQuiz;
 	}
-
-	
 	public static String[][] sortingquiz(String strQuiz[][], int intCount){
 		String strTemp;
 		for(int intpass = 0; intpass < intCount - 1; intpass++){
@@ -94,8 +91,6 @@ public class arraytest{
 
 		return strleaderboard;
 	}
-
-		
 }
 	
 
