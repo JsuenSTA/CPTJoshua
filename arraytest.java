@@ -17,7 +17,6 @@ public class arraytest{
 		txtQuizfile.close();
 		return (intLines/4) ;
 	}
-	
 	public static String[][] loadQuiz(String strQuizfile, int intCount){
 		String strQuiz[][];
 		strQuiz = new String[intCount][5];
