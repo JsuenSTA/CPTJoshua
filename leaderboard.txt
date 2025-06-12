@@ -13,3 +13,12 @@ adding.txt
 Julia
 adding.txt
 100
+joshua
+linear.txt
+70
+Joshua
+linear.txt
+90
+joshua
+linear.txt
+100

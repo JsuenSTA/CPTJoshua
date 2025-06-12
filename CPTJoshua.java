@@ -1,3 +1,10 @@
+//-----------------------------------------------------------------
+//Author: Joshua
+//Program Name: CPTJoshua
+//Creation Date: May 25,2025
+//Version Number:  v1.0
+//-----------------------------------------------------------------
+
 import arc.*;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -61,13 +68,13 @@ public class CPTJoshua{
 			con.setDrawColor(Color.WHITE);
 			con.drawString("Menu",500,200);
 			con.drawString("Play (P)",500, 250);
-			con.drawString("LeaderBoard (L)" ,500,300);
+			con.drawString("Leaderboard (L)" ,500,300);
 			con.drawString("Add quiz (A)" ,500,350);
-			con.drawString("Help(h)",500, 400);
+			con.drawString("Help (H)",500, 400);
 			con.drawString("Quit (Q)" ,500,450);
 			con.repaint();
 			chrInput = con.getChar();
-			if(chrInput == 'p' ){
+			if(chrInput == 'p' || chrInput == 'P'){
 				//Username input
 				con.clear();
 				con.repaint();
@@ -77,8 +84,8 @@ public class CPTJoshua{
 				con.println("Username: ");
 				strname = con.readLine();
 				con.clear();
-				con.println("Welcome" + strname);
-				con.println("Select quiz(Type the name correctly)\n");
+				con.println("Welcome " + strname);
+				con.println("Select quiz\n");
 				while(blnfilecheck == false){
 					TextInputFile masterlist= new TextInputFile("master.txt");
 					while(masterlist.eof() == false){
@@ -86,8 +93,9 @@ public class CPTJoshua{
 						con.println(strselect);
 					}
 					masterlist.close();
-					TextInputFile mastercheck= new TextInputFile("master.txt");
+					con.print("\n");
 					strquiz = con.readLine();
+					TextInputFile mastercheck= new TextInputFile("master.txt");
 					while(mastercheck.eof() == false){
 						strfile = mastercheck.readLine();
 						if(strfile.equals(strquiz)){
@@ -175,11 +183,13 @@ public class CPTJoshua{
 				con.drawString(intanswered + "/" + intcount + " - " + intavg + "%", 500, 400);
 				con.println("Press any key to return to main menu.");
 				con.getChar();
-			}else if(chrInput == 'l'){
+			}else if(chrInput == 'l' || chrInput == 'L'){
+				//Leaderboard
 				con.clear();
 				con.setDrawColor(Color.BLACK);
 				con.fillRect(0,0,1279,720);
 				con.setDrawColor(Color.WHITE);
+				//Reading leaderboard.txt
 				TextInputFile leaderboard = new TextInputFile("leaderboard.txt");
 				intleaderboardcount = arraytest.countleaderboard();
 				strleaderboard = arraytest.loadleaderboard(intleaderboardcount);
@@ -193,7 +203,7 @@ public class CPTJoshua{
 				}
 				con.println("Press any key to leave");
 				con.getChar();
-			}else if(chrInput == 's'){
+			}else if(chrInput == 's' || chrInput == 'S'){
 				//Secret Menu
 				con.setDrawColor(Color.BLACK);
 				con.fillRect(0,0,1279,720);
@@ -204,7 +214,7 @@ public class CPTJoshua{
 				con.println("This tastes a little funny.");
 				con.println("\nPress any key to go back");
 				con.getChar();
-			}else if(chrInput == 'h'){
+			}else if(chrInput == 'h' || chrInput == 'H'){
 				//Help screen
 				con.clear();
 				con.setDrawColor(Color.BLACK);
@@ -216,7 +226,7 @@ public class CPTJoshua{
 				con.println("Your goal is to get 100% with the questions\n");
 				con.println("Press any key to return to main menu.");
 				con.getChar();
-			}else if(chrInput =='a'){
+			}else if(chrInput =='a' || chrInput == 'A'){
 				//add quiz
 				con.clear();
 				con.setDrawColor(Color.BLACK);
@@ -259,7 +269,8 @@ public class CPTJoshua{
 						blnmoreans = false;
 					}
 			}		
-			}else if(chrInput == 'q'){
+			}else if(chrInput == 'q' || chrInput == 'Q'){
+				//Quit 
 				con.closeWindow();
 			}
 		}

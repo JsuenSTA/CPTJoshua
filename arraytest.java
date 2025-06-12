@@ -31,7 +31,6 @@ public class arraytest{
 			//Random number for sorting
 			intRand = (int)(Math.random()*100+1);
 			strQuiz[intRow][4] = intRand + "";
-			System.out.println(intRand);
 		}
 		txtQuizfile.close();
 		return strQuiz;

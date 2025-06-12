@@ -17,7 +17,7 @@ Zero
 What is the slope of y = 0.5x + 8
 1/2
 half
-+0.5
+0.5
 What is the y-intercept of y = -x + 10
 10
 Ten
